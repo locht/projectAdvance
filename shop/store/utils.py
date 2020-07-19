@@ -49,11 +49,6 @@ def cartData(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
-        #create empty cart for now for none-logged in users
-        # items = []
-        # order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False }
-        # cartItems = order['get_cart_items']
-
         cookieData = cookieCart(request)
         cartItems = cookieData['cartItems']
         order = cookieData['order']

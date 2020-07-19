@@ -24,8 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('store.urls')),
 
-    # url(r'^cart/', views.cart, name='cart'),
-    # url(r'^checkout/$', views.checkout, name='checkout'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -46,8 +46,6 @@
         <br>
         <div class="box-element hidden" id="payment-info">
             <input id="make-payment" class="btn btn-success btn-block" type="submit" value="Đặt Hàng">
-            <!-- <small>Paypal Options</small>
-            <button id="make-payment"> THANH TOÁN </button> -->
         </div>
 
     </div>
@@ -64,7 +62,6 @@
                     <p>{{item.product.name}}</p>
                 </div>
                 <div style="flex:1">
-                    <!-- <p>${{item.product.price|floatformat:2}}</p> -->
                     <p>{{item.product.price }} VNĐ</p>
                 </div>
                 <div style="flex:1">
@@ -73,7 +70,6 @@
             </div>
             {% endfor %}
             <h5>Số Lượng Sản Phẩm: {{order.get_cart_items}}</h5>
-            <!-- <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5> -->
             <h5>Tổng: {{order.get_cart_total }} VNĐ</h5>
         </div>
     </div>

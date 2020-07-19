@@ -14,7 +14,6 @@
                     </th>
                     <th>
                         <h5>Tổng Cộng:<strong>
-                            <!-- ${{order.get_cart_total|floatformat:2}} -->
                                 {{order.get_cart_total}} VNĐ
                             </strong></h5>
                     </th>
@@ -42,7 +41,6 @@
                     <p>{{ item.product.name }}</p>
                 </div>
                 <div style="flex:1">
-                    <!-- <p>${{ item.product.price|floatformat:2 }}</p> -->
                     <p>{{ item.product.price }} VNĐ</p>
                 </div>
                 <div style="flex:1">
@@ -54,7 +52,6 @@
                     </div>
                 </div>
                 <div style="flex:1">
-                    <!-- <p>${{ item.get_total|floatformat:2 }}</p> -->
                     <p>{{ item.get_total }} VNĐ</p>
                 </div>
             </div>

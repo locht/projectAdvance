@@ -1,0 +1,17 @@
+{% extends 'store/main.html' %} {% load static %} {% block title %} DONE {% endblock title %} {% block content %} {% csrf_token %}
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title text-center">ĐĂNG KÝ <strong> THÀNH CÔNG</strong></h2>
+                <hr>
+                <div id="gmap" class="contact-map">
+                    Bạn muốn đăng nhập ngay bây giờ để trải nghiệm mua sắm tại SHOP : <a href="{% url 'login' %}" class="btn btn-outline-success"> ĐĂNG NHẬP </a>
+                    <br><br> Quay trở lại Trang Chủ : <a href="{% url 'store' %}" class="btn btn-outline-success"> Trang Chủ </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/#contact-page-->
+{% endblock %}

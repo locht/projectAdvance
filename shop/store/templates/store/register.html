@@ -1,0 +1,27 @@
+{% extends 'store/main.html' %} {% load static %} {% block title %} ĐĂNG KÝ {% endblock title %} {% block content %}
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--sign up form-->
+                    <h2>Đăng ký tài khoản!</h2>
+                    <hr>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <anything_else>
+                            {{ form.as_p }} Nhấn vào đây để <a href="{% url 'login' %}"><strong>đăng nhập</strong> </a>
+                            <hr>
+                            <button type="submit" class="btn btn-success">ĐĂNG KÝ</button>
+                        </anything_else>
+                    </form>
+                </div>
+                <!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/form-->
+
+{% endblock %}

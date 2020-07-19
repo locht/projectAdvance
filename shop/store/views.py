@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 from django.http import JsonResponse
 import json
 import datetime
 
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
+
+from django.contrib.auth.models import User
+from store.forms import RegistrationForm, EditProfileForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -105,70 +111,69 @@ def processOrder(request):
 
     return JsonResponse('Payment complete!', safe=False)
 
-#Da Copy qua utils.py
-# def store(request):
-#     if request.user.is_authenticated:
-#         customer = request.user.customer
-#         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-#         items = order.orderitem_set.all()
-#         cartItems = order.get_cart_items
-#     else:
-#         # items = []
-#         # order = {'get_cart_total':0, 'get_cart_items':0 }
-#         # cartItems = order['get_cart_items']
 
-#         cookieData = cookieCart(request)
-#         cartItems = cookieData['cartItems']
+def larmes(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
 
-#     products = Product.objects.all()
-#     context = {
-#         'products' : products,
-#         'cartItems':cartItems,
-#     }
-#     return render(request, 'store/store.html', context)
+    products = Product.objects.all()
+    context = {
+        'products' : products,
+        'cartItems':cartItems,
+    }
+    return render(request, 'store/larmes.html', context)
 
-#Da Copy qua utils.py
-# def cart(request):
+def casio(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
 
-#     if request.user.is_authenticated:
-#         customer = request.user.customer
-#         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-#         items = order.orderitem_set.all()
-#         cartItems = order.get_cart_items
-#     else:
-#         cookieData = cookieCart(request)
-#         cartItems = cookieData['cartItems']
-#         order = cookieData['order']
-#         items = cookieData['items']
+    products = Product.objects.all()
+    context = {
+        'products' : products,
+        'cartItems':cartItems,
+    }
+    return render(request, 'store/casio.html', context)
 
-#     context = {
-#         'items':items,
-#         'order':order,
-#         'cartItems':cartItems,
-#     }
-#     return render(request, 'store/cart.html', context)
+def citizen(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
 
-#Da Copy qua utils.py
-# def checkout(request):
-#     if request.user.is_authenticated:
-#         customer = request.user.customer
-#         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-#         items = order.orderitem_set.all()
-#         cartItems = order.get_cart_items
-#     else:
-#         #create empty cart for now for none-logged in users
-#         # items = []
-#         # order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False }
-#         # cartItems = order['get_cart_items']
+    products = Product.objects.all()
+    context = {
+        'products' : products,
+        'cartItems':cartItems,
+    }
+    return render(request, 'store/citizen.html', context)
 
-#         cookieData = cookieCart(request)
-#         cartItems = cookieData['cartItems']
-#         order = cookieData['order']
-#         items = cookieData['items']
-        
-#     context = {
-#         'items':items,
-#         'order':order,
-#         'cartItems':cartItems,
-#     }
-#     return render(request, 'store/checkout.html', context)
+def daumier(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+
+    products = Product.objects.all()
+    context = {
+        'products' : products,
+        'cartItems':cartItems,
+    }
+    return render(request, 'store/daumier.html', context)
+
+def done(request):
+    return render(request, 'store/done.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/register-done/") #thêm return ở đây thì k cần thêm href {% url %} cho action bên template (ngược lại - có url thì k cần dòng return)
+            # response = HttpResponse('store/register-done')
+            # return response
+    else:
+        form = RegistrationForm()
+    return render(request, 'store/register.html', {'form': form})
+
+def view_profile(request):
+    args = {'user':request.user}
+    return render(request, 'store/profile.html', args)
+
+def register_done(request):
+    return render(request, 'store/register-done.html')

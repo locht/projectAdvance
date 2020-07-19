@@ -132,3 +132,7 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = "E:/HRLAPP/projectAdvance/shop/static/store/images" #Máy nhà
 
 # MEDIA_ROOT = "D:/APP/shop/static/store/images" #Máy công ty
+
+LOGIN_REDIRECT_URL = '/profile/'
+
+LOGIN_URL = '/store/login/'

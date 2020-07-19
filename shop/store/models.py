@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.db.models.signals import post_save
 # Create your models here.
 
 class Customer(models.Model):
@@ -13,7 +14,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.DecimalField(max_digits=9, decimal_places=0)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
@@ -82,3 +83,17 @@ class ShippingAddress(models.Model):
         return self.address
 
 
+# Create your models here.
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    description = models.CharField(max_length=100, blank=True, default='')
+    city = models.CharField(max_length=100, blank=True, default='')
+    website = models.URLField(blank=True, default='')
+    phone = models.IntegerField(default=0, blank=True)
+
+def create_profile(sender,**kwargs ):
+    if kwargs['created']:
+        user_profile=UserProfile(user=kwargs['instance'])
+        user_profile.save()
+
+post_save.connect(create_profile, sender=User)

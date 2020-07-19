@@ -1,20 +1,70 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %} {% block title %} Store {% endblock title %} {% block content %}
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+        <li data-target="#demo" data-slide-to="4"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../../static/store/images/bg1.png" alt="Los Angeles" width="100%" height="350">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../static/store/images/bg2.png " alt="Chicago" width="100%" height="350">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../static/store/images/bg3.png" alt="New York" width="100%" height="350">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../static/store/images/bg4.png" alt="New York" width="100%" height="350">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../static/store/images/bg5.png" alt="New York" width="100%" height="350">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<br>
 <div class="row">
     {% for product in products %}
-    <div class="col-lg-4">
+    <div class="col-lg-3 col-sm-6 col-12">
         <img class="thumbnail" src="{{ product.imageURL }}">
         <div class="box-element product">
             <h6>
-                <strong>{{ product.name }}</strong>
+                <strong>
+                    {{ product.name }}
+                </strong>
             </h6>
             <hr>
-            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right">
-                <strong>${{ product.price|floatformat:2 }}</strong>
-            </h4>
+            <h5>
+                <strong>
+                    {{ product.price }} VNĐ
+                    <!-- {{ product.price|floatformat:2 }} VNĐ -->
+                </strong>
+            </h5>
+            <hr>
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">
+                Add to cart
+            </button>
+            <a class="btn btn-outline-success" href="#">
+                View
+            </a>
         </div>
     </div>
-    {% endfor %}
+    <br> {% endfor %}
 </div>
 {% endblock content %}

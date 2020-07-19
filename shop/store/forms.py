@@ -28,15 +28,15 @@ class RegistrationForm(UserCreationForm):
             'password2',
         )
 
-    def clean_confirm_password(self): #dãy lệnh này vẫn chạy được
-        password = self.cleaned_data['Mật khẩu']
-        confirm_password = self.cleaned_data['Nhập lại mật khẩu']
+    def clean_confirm_password(self):
+        password = self.cleaned_data['password']
+        confirm_password = self.cleaned_data['password confirm']
         if password != confirm_password:
             raise forms.ValidationError(f"Mật khẩu không trùng khớp!")
         return confirm_password
 
     def clean_username(self):
-        username = self.cleaned_data['Tên đăng nhập']
+        username = self.cleaned_data['username']
         # if not re.search(r'^\w+$', username): 
         if not re.search(r'^[a-zA-Z0-9_.-]{4,}$', username):
             raise forms.ValidationError("Tên đăng nhập có chứa ký hiệu đặc biệt!")

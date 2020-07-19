@@ -122,7 +122,10 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = "E:/HRLAPP/projectAdvance/shop/static/" #Máy nhà
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/store')
+# STATICFILES_DIRS = [                          #runserver
+#    # os.path.join(BASE_DIR, "static"),
+#     'E:/HRLAPP/projectAdvance/shop/static/',
+# ]
 
 # STATIC_ROOT = "D:/APP/shop/static/" #Máy công ty
 

@@ -11,7 +11,7 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         <anything_else>
-                            {{ form.as_p }} Nhấn vào đây để <a href="{% url 'login' %}"><strong>đăng nhập</strong> </a>
+                            {{ form.errors }} {{ form.as_p }} Nhấn vào đây để <a href="{% url 'login' %}"><strong>đăng nhập</strong> </a>
                             <hr>
                             <button type="submit" class="btn btn-success">ĐĂNG KÝ</button>
                         </anything_else>

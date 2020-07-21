@@ -12,7 +12,7 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         <anything_else>
-                            {{ form.as_p }}
+                            {{ form.errors }} {{ form.as_p }}
                             <span>
                             <input type="checkbox" class="checkbox"> 
                             Lưu thông tin đăng nhập

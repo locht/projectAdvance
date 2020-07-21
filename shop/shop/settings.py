@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,7 @@ MEDIA_ROOT = "E:/HRLAPP/projectAdvance/shop/static/store/images" #Máy nhà
 LOGIN_REDIRECT_URL = '/profile/'
 
 LOGIN_URL = '/store/login/'
+
+LOGOUT_REDIRECT_URL = '/done/'
+
+LOGOUT_URL = '/store/logout/'

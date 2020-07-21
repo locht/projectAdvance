@@ -1,5 +1,4 @@
-{% extends 'store/main.html' %} {% load static %} {% block title %} Store {% endblock title %} {% block content %}
-
+{% extends 'store/main.html' %} {% load static %} {% block title %} Store {% endblock title %} {% block content %} {% load humanize %}
 <div id="demo" class="carousel slide" data-ride="carousel">
 
     <!-- Indicators -->
@@ -52,7 +51,7 @@
             <hr>
             <h5>
                 <strong>
-                    {{ product.price }} VNĐ
+                    {{ product.price|intcomma }} VNĐ
                 </strong>
             </h5>
             <hr>

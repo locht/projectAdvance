@@ -7,9 +7,9 @@ from .models import *
 from .utils import cookieCart, cartData, guestOrder
 
 from django.contrib.auth.models import User
-from store.forms import RegistrationForm, EditProfileForm
+from store.forms import RegistrationForm, EditProfileForm, LoginForm
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -172,3 +172,20 @@ def view_profile(request):
 
 def register_done(request):
     return render(request, 'store/register-done.html')
+
+def login_user(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request,username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("/profile/")
+    else:
+        form = LoginForm()
+    context = {
+        'form':form
+    }
+    return render(request, 'store/login.html', context)

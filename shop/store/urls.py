@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     url(r'^register-done/', views.register_done, name='register-done'),
     url(r'^profile/', views.view_profile, name='profile'),
+    url(r'^login/', views.login_user, name='login'),
 
-    url(r'^login/$', auth_views.LoginView.as_view(template_name='store/login.html'), name='login'),
+    # url(r'^login/$', auth_views.LoginView.as_view(template_name='store/login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(template_name='store/logout.html'), name='logout'),
 ]
